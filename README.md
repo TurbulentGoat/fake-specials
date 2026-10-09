@@ -38,10 +38,12 @@ A fake compared against last fortnight's price is strong evidence. A fake compar
 | each on offer $ | The deal price divided by the number of items. |
 | previous price $ | The most recent recorded shelf price that differs from today's. This is usually the price before the latest change. |
 | previous date | When that previous price was recorded. |
+| dearer each $ | How much more each item costs on the deal than at the previous price. A negative number means the deal really is cheaper. |
+| dearer % | The same figure as a percentage of the previous price. |
 | 12-wk low $ | The lowest shelf price recorded in the last 12 weeks. |
 | verdict | See below. |
 
-The Top 10 sheet adds two columns. **dearer each $** is how much more each item costs on the deal than at the previous price. **dearer %** is the same figure as a percentage of the previous price.
+The Top 10 sheet shows a selection of these columns, plus the store and its rank.
 
 ## Verdicts
 
