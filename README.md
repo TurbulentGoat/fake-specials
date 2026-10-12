@@ -14,17 +14,19 @@ The file name gives the scan date: `multibuy-YYYY-MM-DD.xlsx`.
 ## Sheets
 
 - **Top 10 fakes**: the worst ten fakes per store, ranked by how much dearer each item is, as a percentage. Each multibuy deal appears once. "Any 2 for $X" across nine flavours counts as one fake, shown as "(+8 more in this offer)". This sheet only includes fakes whose previous price was recorded in the last 12 weeks.
-- **Coles**, **Woolworths**, **Liquorland**: every multibuy special at that store, fakes first. Fakes are highlighted in red. Each column header has a filter.
+- **Coles**, **Woolworths**, **Liquorland**: every multibuy special at that store, fakes first, then misleading specials. Fakes are highlighted in red and misleading specials in amber. Each column header has a filter.
 
 Liquorland's online shop runs on coles.com.au, so every Liquorland product also appears on the Coles sheet at the same price. The Liquorland sheet is just the liquor products.
 
-## The table at the top of each store sheet
+## The tables at the top of each store sheet
 
-This table only counts that store's fake specials. It shows when each fake's previous price was recorded, which tells you how fresh the comparison is.
+The first table only counts that store's fake specials (red) and misleading specials (amber), with a count row and a percentage row for each. It shows when each special's previous price was recorded, which tells you how fresh the comparison is.
 
-A fake compared against last fortnight's price is strong evidence. A fake compared against a price from two years ago is weaker, because prices change over time.
+A fake compared against last fortnight's price is strong evidence. A fake compared against a price from two years ago is weaker, because prices change over time. The same goes for misleading specials.
 
-"Past 2 weeks" is also part of the current year. Because of that overlap, each row adds up to more than 100%.
+"Past 2 weeks" is also part of the current year. Because of that overlap, each percentage row adds up to more than 100%.
+
+The second table shows how many of the store's multibuy specials are fake, misleading, or either, as a count and as a percentage of all its multibuy specials. Specials with no price history count towards the total, so these percentages are a minimum.
 
 ## Columns on the store sheets
 
@@ -50,6 +52,7 @@ The Top 10 sheet shows a selection of these columns, plus the store and its rank
 | Verdict | Meaning |
 |---|---|
 | FAKE: dearer than previous price | Each item on the deal costs more than the previous shelf price. |
+| MISLEADING: same as previous price | Each item on the deal costs exactly the previous shelf price. The shelf price went up and the deal only brings it back down, so buying the full deal saves nothing and buying one costs more than before. |
 | worse than 12-week low | The deal beats the previous price, but the product was cheaper at some point in the last 12 weeks. |
 | genuine | The deal is at or below both the previous price and the 12-week low. |
 | no history | No price history was found, so the deal can't be checked. |
@@ -59,6 +62,12 @@ The Top 10 sheet shows a selection of these columns, plus the store and its rank
 - All prices are online prices on the scan date. Prices in your local store may differ.
 - Price history is recorded roughly once a week. A short price change between recordings can be missed.
 - "Genuine" only means the deal is not dearer than recent prices. It does not mean the saving is large.
+
+## Website
+
+A full scan of all three stores also writes `fake-specials.json` to the site folder, one level up from here. The site's Fake Specials page (`fake-specials.html`) shows the Top 10 for each store from that file. Upload the new `fake-specials.json` after each scan to update the page.
+
+The file is only replaced by a complete scan. If a store fails, or the scan is run with `--store`, `--limit-pages` or `--no-history`, the old file is left alone so the page keeps showing the previous scan.
 
 ## Sources
 
